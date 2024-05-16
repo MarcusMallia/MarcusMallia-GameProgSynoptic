@@ -3,74 +3,54 @@ using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
-    public static GameStateManager Instance { get; private set; }
-    public GameState CurrentState { get; private set; }
-
-    private void Awake()
+    public GameObject instructionsPanel;
+    public GameObject TimeTrial;
+    public GameObject StartScene;
+    public GameObject Versus;
+    
+    void Start()
     {
-        if (Instance == null)
+          StartScene.SetActive(true);
+        // Hide instructions panel on start
+        if (instructionsPanel != null)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Start()
-    {
-        ChangeState(GameState.MainMenu);
-    }
-
-    public void ChangeState(GameState newState)
-    {
-        CurrentState = newState;
-
-        // Handle state-specific behavior
-        switch (newState)
-        {
-            case GameState.MainMenu:
-                LoadMainMenu();
-                break;
-            case GameState.TimeTrial:
-                StartTimeTrial();
-                break;
-            case GameState.TimeTrialGameOver:
-                ShowTimeTrialGameOver();
-                break;
-            case GameState.Versus:
-                StartVersus();
-                break;
-            case GameState.VersusGameOver:
-                ShowVersusGameOver();
-                break;
+            instructionsPanel.SetActive(false);
         }
     }
+    
+    // Loads time trial mode
+    public void LoadTimeTrial()
+    { 
+        TimeTrial.SetActive(true);
 
-    private void LoadMainMenu()
-    {
-        // Load Main Menu logic
+        StartScene.SetActive(false);
+        Versus.SetActive(false);
     }
 
-    private void StartTimeTrial()
+    // Loads time versus mode
+    public void LoadVersus()
     {
-        // Start Time Trial logic
+        Versus.SetActive(true);
+        
+        StartScene.SetActive(false);
+        TimeTrial.SetActive(false);
     }
 
-    private void ShowTimeTrialGameOver()
+    // Open the main menu 'StartScene'
+     public void LoadMenu()
     {
-        // Show Time Trial Game Over logic
+        StartScene.SetActive(true);
+
+        Versus.SetActive(false);
+        TimeTrial.SetActive(false);
     }
 
-    private void StartVersus()
+    public void ToggleInstructions()
     {
-        // Start Versus logic
-    }
-
-    private void ShowVersusGameOver()
-    {
-        // Show Versus Game Over logic
+        if (instructionsPanel != null)
+        {
+            bool isActive = instructionsPanel.activeSelf;
+            instructionsPanel.SetActive(!isActive);
+        }
     }
 }
