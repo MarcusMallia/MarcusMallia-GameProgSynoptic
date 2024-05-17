@@ -3,17 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
-    public GameObject instructionsPanel;
-    public GameObject StartScene;
-    public GameObject TimeTrial;
-    public GameObject Versus;
-    public GameObject Boat;
-    public GameObject playerOneBoat;
-    public GameObject playerTwoBoat;
-    public GameObject GameOverPanel;
-    public GameObject GameOverPanelV;
-    public Animator animator;
-    
+    [SerializeField] private GameObject instructionsPanel;
+    [SerializeField] private GameObject startScene;
+    [SerializeField] private GameObject timeTrial;
+    [SerializeField] private GameObject versus;
+    [SerializeField] private GameObject boat;
+    [SerializeField] private GameObject playerOneBoat;
+    [SerializeField] private GameObject playerTwoBoat;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject gameOverPanelV;
+    [SerializeField] private Animator animator;
+
     private Rigidbody2D rb;
     private float currentSpeed = 0f;
     public static GameStateManager Instance { get; private set; }

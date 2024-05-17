@@ -3,27 +3,28 @@ using UnityEngine;
 public class BoatVersus : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float constantAcceleration = 0.2f; // Constant acceleration when a key is pressed
-    public float maxDeceleration = 1f; // Maximum deceleration when stamina is 0
-    private float currentDeceleration;
-    public float maxSpeed = 5f; // Theoretical maximum speed
+     [SerializeField] private float constantAcceleration = 0.2f; // Constant acceleration when a key is pressed
+    [SerializeField] private float maxDeceleration = 1f; // Maximum deceleration when stamina is 0
+    [SerializeField] private float currentDeceleration;
+    [SerializeField] private float maxSpeed = 5f; // Theoretical maximum speed
     private float currentSpeed = 0f;
     private bool lastKeyPressedLeft = false;
     private bool canMove = false;
-    public float passiveDeceleration = 0.1f;
-    public GameObject GameOverPanelV;
+    [SerializeField] private float passiveDeceleration = 0.1f;
+    [SerializeField] private GameObject gameOverPanelV;
 
-    public bool isPlayerOne = true;
+    [SerializeField] private bool isPlayerOne = true;
 
 
 
     // Stamina variables
-    public float maxStamina = 100f;
+    [SerializeField] private float maxStamina = 100f;
     private float currentStamina;
 
+
     // Stamina depletion and refill rates
-    public float staminaDepletionRate = 10f;
-    public float baseRefillRate = 5f;
+    [SerializeField] private float staminaDepletionRate = 10f;
+    [SerializeField] private float baseRefillRate = 5f;
 
     public delegate void BoatStateHandler(float speed, float stamina);
 

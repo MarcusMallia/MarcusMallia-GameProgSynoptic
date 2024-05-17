@@ -5,17 +5,19 @@ using UnityEngine.SceneManagement;
 public class UIManagerVersus : MonoBehaviour
 {
     // UI elements for Player 1
-    public Text speedTextPlayer1;
-    public Slider staminaSliderPlayer1;
+    
+    [SerializeField] private Text speedTextPlayer1;
+    [SerializeField] private Slider staminaSliderPlayer1;
 
     // UI elements for Player 2
-    public Text speedTextPlayer2;
-    public Slider staminaSliderPlayer2;
-   
-    public Text highScoreText;
-    public Text timerText;          
-    public GameObject gameOverPanel; 
-    public Text finalTimeText;
+    [SerializeField] private Text speedTextPlayer2;
+    [SerializeField] private Slider staminaSliderPlayer2;
+
+    [SerializeField] private Text highScoreText;
+    [SerializeField] private Text timerText;         
+    [SerializeField] private GameObject gameOverPanel; 
+    [SerializeField] private Text finalTimeText;
+
     private float startTime;
     private bool timerRunning = false;
     private float finalRaceTime;

@@ -4,12 +4,13 @@ using System.Collections;
 
 public class RaceStarterVersus : MonoBehaviour
 {
-    public Text startText; // Assign in Inspector
-    public Text countdownText; // Assign in Inspector
+   [SerializeField] private Text startText; // Assign in Inspector
+    [SerializeField] private Text countdownText; // Assign in Inspector
     private UIManagerVersus uiManager; // Reference to your UIManager
-    public BoatVersus playerOneBoat; 
-    public BoatVersus playerTwoBoat;
+    [SerializeField] private BoatVersus playerOneBoat; 
+    [SerializeField] private BoatVersus playerTwoBoat;
     private bool raceStarted = false;
+
 
     public void Start()
     {
