@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public GameObject gameRoot;
     public Text speedText;         
     public Slider staminaSlider;   
     public Text timerText;          
@@ -66,6 +67,11 @@ public class UIManager : MonoBehaviour
 
     public void StartTimer()
     {
+        if (timerText != null)
+        {
+            timerText.color = Color.black;
+        }
+
         startTime = Time.time;
         timerRunning = true;
     }
@@ -126,6 +132,7 @@ public class UIManager : MonoBehaviour
         string json = PlayerPrefs.GetString(HighScoreKey, JsonUtility.ToJson(new HighScoreData(float.MaxValue)));
         return JsonUtility.FromJson<HighScoreData>(json);
     }
+
     private void UpdateFinalTimeText()
     {
         if (finalTimeText != null && timerText != null)
@@ -136,12 +143,23 @@ public class UIManager : MonoBehaviour
    
     public void RestartGame()
     {
-        SceneManager.LoadScene("Timetrial");
-    }
-
-    public void ReturnToMenu()
+      if (startTime != null)
     {
-        
-        SceneManager.LoadScene("StartScene");
+        startTime = Time.time;
     }
+    if (speedText != null)  
+    {
+        speedText.text = "Speed: 0";
+    }
+    if (staminaSlider != null)  {
+        staminaSlider.value = staminaSlider.maxValue;
+    }
+    }
+        
+      // // FIXME Duplicate code
+    // public void ReturnToMenu()
+    // {
+        
+    //     SceneManager.LoadScene("StartScene");
+    // }
 }
