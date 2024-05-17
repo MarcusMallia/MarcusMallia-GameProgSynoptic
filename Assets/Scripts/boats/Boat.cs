@@ -197,8 +197,10 @@ public class Boat : MonoBehaviour
         return maxDeceleration * (1 - Mathf.Pow(normalizedStamina, 1.5f));
     }
 
+    // TODO duplicate code
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("other.gameObject.CompareTag(FinishLine)" + other.gameObject.CompareTag("FinishLine"));
         if (other.gameObject.CompareTag("FinishLine"))
         {
             // Direct method call approach
@@ -221,7 +223,7 @@ public class Boat : MonoBehaviour
         currentStamina = maxStamina;
 
         // Reset Rigidbody2D velocity
-        rb.velocity = Vector2.zero;
-        rb.angularVelocity = 0f;
+        // rb.velocity = Vector2.zero;
+        // rb.angularVelocity = 0f;
     }
 }

@@ -55,10 +55,7 @@ public class GameStateManager : MonoBehaviour
             instructionsPanel.SetActive(false);
         }
         rb = GetComponent<Rigidbody2D>();
-      if (GameOverPanelV != null)
-        {
-            GameOverPanelV.SetActive(false);
-        }
+    
     }
 
     public void ToggleInstructions()
@@ -131,6 +128,8 @@ public class GameStateManager : MonoBehaviour
     public void LoadVersus()
     {
          ChangeState(GameState.Versus);
+         playerOneBoat.GetComponent<BoatVersus>().ResetBoat(playerOneBoatInitialPosition, playerOneBoatInitialRotation);
+        playerTwoBoat.GetComponent<BoatVersus>().ResetBoat(playerTwoBoatInitialPosition, playerTwoBoatInitialRotation);
 
         RaceStarterVersus raceStarter = FindObjectOfType<RaceStarterVersus>();
         raceStarter.Start();
@@ -153,7 +152,7 @@ public class GameStateManager : MonoBehaviour
     // Open the GameOverPanel
     public void GameOver()
     {
-             ChangeState(GameState.GameOver);
+            ChangeState(GameState.GameOver);
     
             // Direct method call approach
             UIManager uiManager = FindObjectOfType<UIManager>();

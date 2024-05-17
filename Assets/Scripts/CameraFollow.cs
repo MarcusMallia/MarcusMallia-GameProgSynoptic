@@ -26,7 +26,7 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 desiredPosition = new Vector3(boatTransform.position.x + offset.x, transform.position.y, offset.z);
+        Vector3 desiredPosition = new Vector3(boatTransform.position.x + offset.x, transform.position.y );
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
     }

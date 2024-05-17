@@ -208,12 +208,5 @@ public class UIManager : MonoBehaviour
     if (staminaSlider != null)  {
         staminaSlider.value = staminaSlider.maxValue;
     }
-    }
-        
-      // // FIXME Duplicate code
-    // public void ReturnToMenu()
-    // {
-        
-    //     SceneManager.LoadScene("StartScene");
-    // }
+    }       
 }

@@ -120,6 +120,7 @@ public class UIManagerVersus : MonoBehaviour
 
     public void FinishTimer(bool isPlayerOneWinner, float winningTime)
     {
+        Debug.Log ("RaceFinished" + RaceFinished);
         if (!RaceFinished) // Check if the race is already finished
         {
             RaceFinished = true;

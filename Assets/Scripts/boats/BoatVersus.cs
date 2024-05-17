@@ -11,6 +11,7 @@ public class BoatVersus : MonoBehaviour
     private bool lastKeyPressedLeft = false;
     private bool canMove = false;
     public float passiveDeceleration = 0.1f;
+    public GameObject GameOverPanelV;
 
     public bool isPlayerOne = true;
 
@@ -202,52 +203,62 @@ public class BoatVersus : MonoBehaviour
     void FinishRace()
     {
         UIManagerVersus uiManager = FindObjectOfType<UIManagerVersus>();
-        if (uiManager != null && !uiManager.RaceFinished)
-        {
+
+        Debug.Log("fishline");
+
+        // if (uiManager != null && !uiManager.RaceFinished)
+        // {
             float raceTime = Time.time - uiManager.StartTime;
             uiManager.FinishTimer(isPlayerOne, raceTime);
-        }
+            GameOverPanelV.SetActive(true);
+        // }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.gameObject.CompareTag("FinishLinePlayer1") && isPlayerOne) || 
-            (other.gameObject.CompareTag("FinishLinePlayer2") && !isPlayerOne))
-        {
+        Debug.Log("other.gameObject.CompareTag('FinishLinePlayer1')" + other.gameObject.CompareTag("FinishLinePlayer1"));
+        Debug.Log("other.gameObject.CompareTag('FinishLinePlayer2')" + other.gameObject.CompareTag("FinishLinePlayer2"));
+        Debug.Log("isPlayerOne" + isPlayerOne);
+        
+        // if ((other.gameObject.CompareTag("FinishLinePlayer1") && isPlayerOne) || 
+        //     (other.gameObject.CompareTag("FinishLinePlayer2") && !isPlayerOne))
+        // {
             FinishRace();
-        }
+        // }
+        
        
     }
 
+    // TODO remove extra boat
     public void ResetBoat(Vector3 playerOneBoatInitialPosition, Quaternion playerOneBoatInitialRotation)
-        {
-            // Reset the boat's position and rotation
-            transform.position = playerOneBoatInitialPosition;
-            transform.rotation = playerOneBoatInitialRotation;
-            
+    {
+        // Reset the boat's position and rotation
+        transform.position = playerOneBoatInitialPosition;
+        transform.rotation = playerOneBoatInitialRotation;
+        
+        // Reset the boat's stats
+        currentSpeed = 0;
+        currentStamina = maxStamina;
 
-            // Reset the boat's stats
-            currentSpeed = 0;
-            currentStamina = maxStamina;
+        // Reset Rigidbody2D velocity
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+    }
 
-            // Reset Rigidbody2D velocity
-            rb.velocity = Vector2.zero;
-            rb.angularVelocity = 0f;
-        }
     public void ResetBoat2(Vector3 playerTwoBoatInitialPosition, Quaternion playerTwoBoatInitialRotation)
-        {
-            // Reset the boat's position and rotation
-            transform.position = playerTwoBoatInitialPosition;
-            transform.rotation = playerTwoBoatInitialRotation;
-            
+    {
+        // Reset the boat's position and rotation
+        transform.position = playerTwoBoatInitialPosition;
+        transform.rotation = playerTwoBoatInitialRotation;
+        
 
-            // Reset the boat's stats
-            currentSpeed = 0;
-            currentStamina = maxStamina;
+        // Reset the boat's stats
+        currentSpeed = 0;
+        currentStamina = maxStamina;
 
-            // Reset Rigidbody2D velocity
-            rb.velocity = Vector2.zero;
-            rb.angularVelocity = 0f;
-        }
+        // Reset Rigidbody2D velocity
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+    }
 
     
 }
