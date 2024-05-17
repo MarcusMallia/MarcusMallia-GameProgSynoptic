@@ -4,9 +4,9 @@ using System.Collections;
 
 public class RaceStarterVersus : MonoBehaviour
 {
-   [SerializeField] private Text startText; // Assign in Inspector
-    [SerializeField] private Text countdownText; // Assign in Inspector
-    private UIManagerVersus uiManager; // Reference to your UIManager
+   [SerializeField] private Text startText; 
+    [SerializeField] private Text countdownText; 
+    private UIManagerVersus uiManager; 
     [SerializeField] private BoatVersus playerOneBoat; 
     [SerializeField] private BoatVersus playerTwoBoat;
     private bool raceStarted = false;
@@ -14,7 +14,7 @@ public class RaceStarterVersus : MonoBehaviour
 
     public void Start()
     {
-        uiManager = FindObjectOfType<UIManagerVersus>(); // Find and assign the UIManager
+        uiManager = FindObjectOfType<UIManagerVersus>(); 
         if (startText != null) 
         {
             startText.gameObject.SetActive(true); // Ensure the start text is visible at the beginning

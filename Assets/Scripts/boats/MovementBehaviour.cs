@@ -30,10 +30,8 @@ public class MovementBehaviour : MonoBehaviour
             HandleInput();
             RefillStamina();
 
-            // Calculate deceleration for logging
             float currentDeceleration = CalculateDeceleration(currentStamina);
 
-            // Log current speed, stamina, and deceleration
             Debug.Log("Speed: " + currentSpeed + ", Stamina: " + currentStamina + ", Deceleration: " + currentDeceleration);
 
             currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
@@ -59,19 +57,16 @@ public class MovementBehaviour : MonoBehaviour
         }
         else
         {
-            // Apply dynamic deceleration during player input
             currentSpeed -= currentDynamicDeceleration * Time.deltaTime;
         }
 
-        currentSpeed = Mathf.Max(currentSpeed, 0);  // Ensure speed doesn't go negative
+        currentSpeed = Mathf.Max(currentSpeed, 0);
         rb.velocity = new Vector2(currentSpeed, rb.velocity.y);
     }
 
     protected virtual void HandleInput()
     {
         float resistance = CalculateResistance(currentStamina);
-
-        // Apply resistance even during acceleration
         float effectiveAcceleration = constantAcceleration * (1 - resistance);
         
         if (currentStamina > 0)
@@ -93,13 +88,11 @@ public class MovementBehaviour : MonoBehaviour
 
     protected void ApplyPassiveDeceleration()
     {
-        // Apply passive deceleration when there is no player input
         currentSpeed -= passiveDeceleration * Time.deltaTime;
     }
 
     protected float CalculateResistance(float currentStamina)
     {
-        // Example: Inversely proportional to stamina
         return (1 - currentStamina / maxStamina) * maxDeceleration;
     }
 
@@ -117,7 +110,7 @@ public class MovementBehaviour : MonoBehaviour
 
     protected void RefillStamina()
     {
-        float speedFactor = 1 - (currentSpeed / maxSpeed);  // Inverse relation to speed
+        float speedFactor = 1 - (currentSpeed / maxSpeed);
         float modifiedRefillRate = baseRefillRate * speedFactor;
 
         currentStamina += modifiedRefillRate * Time.deltaTime;

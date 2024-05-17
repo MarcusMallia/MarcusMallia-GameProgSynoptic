@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public Text timerText; // Assign this in the inspector to your UI Text element
+    public Text timerText; 
     private float startTime;
     private bool isRunning = true;
 
@@ -29,6 +29,6 @@ public class Timer : MonoBehaviour
     {
         // Call this method when the boat crosses the finish line
         isRunning = false;
-        timerText.color = Color.yellow; // Change the timer color to indicate completion
+        timerText.color = Color.yellow;
     }
 }

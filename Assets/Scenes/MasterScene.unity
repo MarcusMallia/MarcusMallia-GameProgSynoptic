@@ -446,7 +446,7 @@ Transform:
   m_GameObject: {fileID: 31211082}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.99996656, w: -0.008184316}
-  m_LocalPosition: {x: 8.26, y: 10.07, z: 0}
+  m_LocalPosition: {x: 8.26, y: 10.07, z: 10}
   m_LocalScale: {x: 0.50294495, y: 0.44644248, z: 0.94702977}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -538,8 +538,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constantAcceleration: 0.5
   maxDeceleration: 2.3
+  currentDeceleration: 0
   maxSpeed: 16
   passiveDeceleration: 0.5
+  gameOverPanelV: {fileID: 245610518}
   isPlayerOne: 1
   maxStamina: 100
   staminaDepletionRate: 90
@@ -2863,7 +2865,7 @@ Transform:
   m_GameObject: {fileID: 394687503}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.99996656, w: -0.008184316}
-  m_LocalPosition: {x: 8.43, y: 0.21, z: 0}
+  m_LocalPosition: {x: 8.43, y: 0.21, z: 10}
   m_LocalScale: {x: 0.50294495, y: 0.44644248, z: 0.94702977}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2883,8 +2885,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constantAcceleration: 0.5
   maxDeceleration: 2.3
+  currentDeceleration: 0
   maxSpeed: 16
   passiveDeceleration: 0.5
+  gameOverPanelV: {fileID: 245610518}
   isPlayerOne: 0
   maxStamina: 100
   staminaDepletionRate: 90
@@ -4123,7 +4127,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.6, y: 10.28, z: 0}
+  m_LocalPosition: {x: 8.6, y: 10.28, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5267,7 +5271,7 @@ Transform:
   m_GameObject: {fileID: 803187283}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.6, y: 0, z: -1.4799995}
+  m_LocalPosition: {x: 8.6, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6083,7 +6087,7 @@ Transform:
   m_GameObject: {fileID: 1021427586}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.3511, y: 0.0902, z: 20}
+  m_LocalPosition: {x: 23.3511, y: 0.0902, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7102,14 +7106,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionsPanel: {fileID: 1638254996}
-  StartScene: {fileID: 1200748296}
-  TimeTrial: {fileID: 790366754}
-  Versus: {fileID: 1418948565}
-  Boat: {fileID: 179653418}
+  startScene: {fileID: 1200748296}
+  timeTrial: {fileID: 790366754}
+  versus: {fileID: 1418948565}
+  boat: {fileID: 179653418}
   playerOneBoat: {fileID: 31211082}
   playerTwoBoat: {fileID: 394687503}
-  GameOverPanel: {fileID: 1316161027}
-  GameOverPanelV: {fileID: 245610518}
+  gameOverPanel: {fileID: 1316161027}
+  gameOverPanelV: {fileID: 245610518}
   animator: {fileID: 1134176689}
 --- !u!95 &1134176689
 Animator:
@@ -10167,7 +10171,7 @@ Transform:
   m_GameObject: {fileID: 1739218457}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.3511, y: 10.9, z: 20}
+  m_LocalPosition: {x: 23.3511, y: 10.9, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12225,8 +12229,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029182431}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 320.88, y: 10.721701, z: 10}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 320.99, y: 10.7, z: 10}
   m_LocalScale: {x: 2.8604867, y: 3.0213385, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
