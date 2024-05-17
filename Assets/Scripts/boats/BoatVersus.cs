@@ -32,6 +32,90 @@ public class BoatVersus : MonoBehaviour
     public static event BoatStateHandler OnBoatStateUpdatedPlayer1;
     public static event BoatStateHandler OnBoatStateUpdatedPlayer2;
 
+       public float ConstantAcceleration
+    {
+        get => constantAcceleration;
+        set => constantAcceleration = value;
+    }
+
+    public float MaxDeceleration
+    {
+        get => maxDeceleration;
+        set => maxDeceleration = value;
+    }
+
+    public float CurrentDeceleration
+    {
+        get => currentDeceleration;
+        set => currentDeceleration = value;
+    }
+
+    public float MaxSpeed
+    {
+        get => maxSpeed;
+        set => maxSpeed = value;
+    }
+
+    public float CurrentSpeed
+    {
+        get => currentSpeed;
+        set => currentSpeed = value;
+    }
+
+    public bool LastKeyPressedLeft
+    {
+        get => lastKeyPressedLeft;
+        set => lastKeyPressedLeft = value;
+    }
+
+    public bool CanMove
+    {
+        get => canMove;
+        set => canMove = value;
+    }
+
+    public float PassiveDeceleration
+    {
+        get => passiveDeceleration;
+        set => passiveDeceleration = value;
+    }
+
+    public GameObject GameOverPanelV
+    {
+        get => gameOverPanelV;
+        set => gameOverPanelV = value;
+    }
+
+    public bool IsPlayerOne
+    {
+        get => isPlayerOne;
+        set => isPlayerOne = value;
+    }
+
+    public float MaxStamina
+    {
+        get => maxStamina;
+        set => maxStamina = value;
+    }
+
+    public float CurrentStamina
+    {
+        get => currentStamina;
+        set => currentStamina = value;
+    }
+
+    public float StaminaDepletionRate
+    {
+        get => staminaDepletionRate;
+        set => staminaDepletionRate = value;
+    }
+
+    public float BaseRefillRate
+    {
+        get => baseRefillRate;
+        set => baseRefillRate = value;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

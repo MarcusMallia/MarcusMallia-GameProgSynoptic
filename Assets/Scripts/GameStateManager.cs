@@ -28,6 +28,66 @@ public class GameStateManager : MonoBehaviour
     private Vector3 playerTwoBoatInitialPosition = new Vector3(8.43f, 0.21f, 0f);
     private Quaternion playerTwoBoatInitialRotation = Quaternion.Euler(0f, 0f, 180.93f);
 
+ public GameObject InstructionsPanel
+    {
+        get => instructionsPanel;
+        set => instructionsPanel = value;
+    }
+
+    public GameObject StartScene
+    {
+        get => startScene;
+        set => startScene = value;
+    }
+
+    public GameObject TimeTrial
+    {
+        get => timeTrial;
+        set => timeTrial = value;
+    }
+
+    public GameObject Versus
+    {
+        get => versus;
+        set => versus = value;
+    }
+
+    public GameObject Boat
+    {
+        get => boat;
+        set => boat = value;
+    }
+
+    public GameObject PlayerOneBoat
+    {
+        get => playerOneBoat;
+        set => playerOneBoat = value;
+    }
+
+    public GameObject PlayerTwoBoat
+    {
+        get => playerTwoBoat;
+        set => playerTwoBoat = value;
+    }
+
+    public GameObject GameOverPanel
+    {
+        get => gameOverPanel;
+        set => gameOverPanel = value;
+    }
+
+    public GameObject GameOverPanelV
+    {
+        get => gameOverPanelV;
+        set => gameOverPanelV = value;
+    }
+
+    public Animator Animator
+    {
+        get => animator;
+        set => animator = value;
+    }
+
     private void Awake()
     {
         if (Instance == null)
