@@ -14,6 +14,8 @@ public class BoatVersus : MonoBehaviour
 
     public bool isPlayerOne = true;
 
+
+
     // Stamina variables
     public float maxStamina = 100f;
     private float currentStamina;
@@ -32,6 +34,7 @@ public class BoatVersus : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         currentStamina = maxStamina;
+       
     }
 
     void Update()
@@ -214,7 +217,41 @@ public class BoatVersus : MonoBehaviour
         }
        
     }
+
+    public void ResetBoat(Vector3 playerOneBoatInitialPosition, Quaternion playerOneBoatInitialRotation)
+        {
+            // Reset the boat's position and rotation
+            transform.position = playerOneBoatInitialPosition;
+            transform.rotation = playerOneBoatInitialRotation;
+            
+
+            // Reset the boat's stats
+            currentSpeed = 0;
+            currentStamina = maxStamina;
+
+            // Reset Rigidbody2D velocity
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+    public void ResetBoat2(Vector3 playerTwoBoatInitialPosition, Quaternion playerTwoBoatInitialRotation)
+        {
+            // Reset the boat's position and rotation
+            transform.position = playerTwoBoatInitialPosition;
+            transform.rotation = playerTwoBoatInitialRotation;
+            
+
+            // Reset the boat's stats
+            currentSpeed = 0;
+            currentStamina = maxStamina;
+
+            // Reset Rigidbody2D velocity
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+
+    
 }
+    
 
         
     

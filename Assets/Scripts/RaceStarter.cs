@@ -78,10 +78,7 @@ public class RaceStarter : MonoBehaviour
 
     public void ResetRace()
     {
-        raceStarted = false;
-        
-        
-        
+        raceStarted = false; 
     }
 
     public bool IsRaceStarted()

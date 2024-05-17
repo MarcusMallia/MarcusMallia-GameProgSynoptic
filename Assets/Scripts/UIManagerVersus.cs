@@ -51,14 +51,16 @@ public class UIManagerVersus : MonoBehaviour
     {
         UpdatePlayerUI(speedTextPlayer2, staminaSliderPlayer2, speed, stamina);
     }
+
     void Start()
     {
+         if (gameOverPanel != null) gameOverPanel.SetActive(false);
         // Initialize stamina sliders for both players
         InitializeStaminaSlider(staminaSliderPlayer1);
         InitializeStaminaSlider(staminaSliderPlayer2);
 
         // Hide Game Over Panel initially
-        if (gameOverPanel != null) gameOverPanel.SetActive(false);
+       
     }
 
     void InitializeStaminaSlider(Slider slider)
@@ -149,14 +151,30 @@ public class UIManagerVersus : MonoBehaviour
     }
     
    
-    public void RestartGame()
+   public void RestartGame()
     {
-        SceneManager.LoadScene("Versus");
+      if (startTime != null)
+    {
+        startTime = Time.time;
+    }
+    if (speedTextPlayer1 != null)  
+    {
+        speedTextPlayer1.text = "Speed: 0";
+    }
+    if (speedTextPlayer2 != null)  
+    {
+        speedTextPlayer2.text = "Speed: 0";   
+    }
+    if (staminaSliderPlayer1 != null)  
+    {
+        staminaSliderPlayer1.value = staminaSliderPlayer1.maxValue;
+    }
+     if (staminaSliderPlayer2 != null)  
+    {
+        staminaSliderPlayer2.value = staminaSliderPlayer2.maxValue;
     }
 
-    public void ReturnToMenu()
-    {
-        
-        SceneManager.LoadScene("StartScene");
     }
+
+
 }

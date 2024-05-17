@@ -8,16 +8,25 @@ public class GameStateManager : MonoBehaviour
     public GameObject TimeTrial;
     public GameObject Versus;
     public GameObject Boat;
+    public GameObject playerOneBoat;
+    public GameObject playerTwoBoat;
     public GameObject GameOverPanel;
-    private float currentSpeed = 0f;
+    public GameObject GameOverPanelV;
     public Animator animator;
+    
     private Rigidbody2D rb;
-
+    private float currentSpeed = 0f;
     public static GameStateManager Instance { get; private set; }
     public GameState CurrentState { get; private set; }
  
     private Vector3 boatInitialPosition = new Vector3(0.1099998f, 0.0200001f, 0f);
     private Quaternion boatInitialRotation = Quaternion.Euler(0f, 0f, 180.93f);
+
+    private Vector3 playerOneBoatInitialPosition = new Vector3(8.26f, 10.07f, 0f);
+    private Quaternion playerOneBoatInitialRotation = Quaternion.Euler(0f, 0f, 180.93f);
+
+    private Vector3 playerTwoBoatInitialPosition = new Vector3(8.43f, 0.21f, 0f);
+    private Quaternion playerTwoBoatInitialRotation = Quaternion.Euler(0f, 0f, 180.93f);
 
     private void Awake()
     {
@@ -46,7 +55,10 @@ public class GameStateManager : MonoBehaviour
             instructionsPanel.SetActive(false);
         }
         rb = GetComponent<Rigidbody2D>();
-      
+      if (GameOverPanelV != null)
+        {
+            GameOverPanelV.SetActive(false);
+        }
     }
 
     public void ToggleInstructions()
@@ -119,6 +131,16 @@ public class GameStateManager : MonoBehaviour
     public void LoadVersus()
     {
          ChangeState(GameState.Versus);
+
+        RaceStarterVersus raceStarter = FindObjectOfType<RaceStarterVersus>();
+        raceStarter.Start();
+        raceStarter.Update();
+        raceStarter.ResetRace();
+
+        if (GameOverPanelV != null)
+        {
+            GameOverPanelV.SetActive(false);
+        }
     }
 
     // Open the main menu 'StartScene'
@@ -139,7 +161,7 @@ public class GameStateManager : MonoBehaviour
             {
                 uiManager.FinishTimer();
             }
-        }
+    }
 
     public void RestartGame()
     {
@@ -148,23 +170,39 @@ public class GameStateManager : MonoBehaviour
             ChangeState(GameState.TimeTrial);
 
             RaceStarter raceStarter = FindObjectOfType<RaceStarter>();
-            // if (raceStarter != null)
-            // {
+     
                 raceStarter.Start();
                 raceStarter.Update();
                 raceStarter.ResetRace();
-
-            // }
     
             if (GameOverPanel != null)
             {
                 GameOverPanel.SetActive(false);
             }
-
-            
-         
     }
+ 
+public void RestartGameVersus()
+    {
+        
+        playerOneBoat.GetComponent<BoatVersus>().ResetBoat(playerOneBoatInitialPosition, playerOneBoatInitialRotation);
+        playerTwoBoat.GetComponent<BoatVersus>().ResetBoat(playerTwoBoatInitialPosition, playerTwoBoatInitialRotation);
+
+        ChangeState(GameState.Versus);
+
+        RaceStarterVersus raceStarter = FindObjectOfType<RaceStarterVersus>();
+        raceStarter.Start();
+        raceStarter.Update();
+        raceStarter.ResetRace();
+
+        if (GameOverPanelV != null)
+        {
+            GameOverPanelV.SetActive(false);
+        }
+    }
+
+
 }
+
         
     
 

@@ -11,7 +11,7 @@ public class RaceStarterVersus : MonoBehaviour
     public BoatVersus playerTwoBoat;
     private bool raceStarted = false;
 
-    void Start()
+    public void Start()
     {
         uiManager = FindObjectOfType<UIManagerVersus>(); // Find and assign the UIManager
         if (startText != null) 
@@ -33,7 +33,7 @@ public class RaceStarterVersus : MonoBehaviour
     }
     
 
-    void Update()
+    public void Update()
     {
         if (!raceStarted && Input.GetKeyDown(KeyCode.Space))
         {
@@ -83,5 +83,16 @@ public class RaceStarterVersus : MonoBehaviour
         }
 
         raceStarted = true;
+    }
+
+    
+    public void ResetRace()
+    {
+        raceStarted = false; 
+    }
+
+    public bool IsRaceStarted()
+    {
+        return raceStarted;
     }
 }
