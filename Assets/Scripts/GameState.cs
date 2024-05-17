@@ -2,7 +2,7 @@ public enum GameState
 {
     MainMenu,
     TimeTrial,
-    TimeTrialGameOver,
+    GameOver,
     Versus,
-    VersusGameOver
+    
 }
