@@ -3,10 +3,22 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public Text timerText; // Assign this in the inspector to your UI Text element
+    [SerializeField] private Text timerText; // Assign this in the inspector to your UI Text element
     private float startTime;
     private bool isRunning = true;
 
+    public Text TimerText
+    {
+        get => timerText;
+        private set => timerText = value;
+    }
+
+    public bool IsRunning
+    {
+        get => isRunning;
+        private set => isRunning = value;
+    }
+    
     void Start()
     {
         // Record the start time when the game begins

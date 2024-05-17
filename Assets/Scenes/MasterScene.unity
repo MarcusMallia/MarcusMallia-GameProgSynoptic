@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 31211084}
   - component: {fileID: 31211087}
   - component: {fileID: 31211086}
-  - component: {fileID: 31211083}
+  - component: {fileID: 31211088}
   m_Layer: 0
   m_Name: playerOneBoat
   m_TagString: Untagged
@@ -385,25 +385,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &31211083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31211082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47b5e162cfda90342b3de17fea56a664, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  constantAcceleration: 0.5
-  maxDeceleration: 2.3
-  maxSpeed: 16
-  passiveDeceleration: 0.5
-  maxStamina: 100
-  staminaDepletionRate: 90
-  baseRefillRate: 12
 --- !u!212 &31211084
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -465,9 +446,9 @@ Transform:
   m_GameObject: {fileID: 31211082}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.99996656, w: -0.008184316}
-  m_LocalPosition: {x: 8.26, y: 10.07, z: 10}
+  m_LocalPosition: {x: 8.26, y: 10.07, z: 0}
   m_LocalScale: {x: 0.50294495, y: 0.44644248, z: 0.94702977}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1418948566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180.938}
@@ -543,6 +524,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &31211088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31211082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8020f28f400c64a9cdc1c1c28e6a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantAcceleration: 0.5
+  maxDeceleration: 2.3
+  maxSpeed: 16
+  passiveDeceleration: 0.5
+  isPlayerOne: 1
+  maxStamina: 100
+  staminaDepletionRate: 90
+  baseRefillRate: 14
 --- !u!1 &51938173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,8 +1350,10 @@ MonoBehaviour:
   constantAcceleration: 0.5
   maxDeceleration: 2.3
   maxSpeed: 16
+  currentSpeed: 0
   passiveDeceleration: 0.5
   maxStamina: 100
+  currentStamina: 0
   staminaDepletionRate: 90
   baseRefillRate: 14
 --- !u!50 &179653421
@@ -1858,7 +1861,7 @@ GameObject:
   - component: {fileID: 245610521}
   - component: {fileID: 245610520}
   m_Layer: 5
-  m_Name: GameOverPanel
+  m_Name: GameOverPanelV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2657,8 +2660,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1147644344}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1134176688}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -2719,7 +2722,7 @@ GameObject:
   - component: {fileID: 394687507}
   - component: {fileID: 394687506}
   - component: {fileID: 394687505}
-  - component: {fileID: 394687504}
+  - component: {fileID: 394687509}
   m_Layer: 0
   m_Name: playerTwoBoat
   m_TagString: Untagged
@@ -2727,25 +2730,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &394687504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394687503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47b5e162cfda90342b3de17fea56a664, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  constantAcceleration: 0.5
-  maxDeceleration: 2.3
-  maxSpeed: 16
-  passiveDeceleration: 0.5
-  maxStamina: 100
-  staminaDepletionRate: 90
-  baseRefillRate: 14
 --- !u!50 &394687505
 Rigidbody2D:
   serializedVersion: 4
@@ -2879,12 +2863,32 @@ Transform:
   m_GameObject: {fileID: 394687503}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.99996656, w: -0.008184316}
-  m_LocalPosition: {x: 8.43, y: 0.21, z: 10}
+  m_LocalPosition: {x: 8.43, y: 0.21, z: 0}
   m_LocalScale: {x: 0.50294495, y: 0.44644248, z: 0.94702977}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1418948566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180.938}
+--- !u!114 &394687509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394687503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8020f28f400c64a9cdc1c1c28e6a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantAcceleration: 0.5
+  maxDeceleration: 2.3
+  maxSpeed: 16
+  passiveDeceleration: 0.5
+  isPlayerOne: 0
+  maxStamina: 100
+  staminaDepletionRate: 90
+  baseRefillRate: 14
 --- !u!1 &421528187
 GameObject:
   m_ObjectHideFlags: 0
@@ -3349,9 +3353,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1281040662}
-        m_TargetAssemblyTypeName: UIManagerVersus, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 1134176688}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
+        m_MethodName: RestartGameVersus
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4308,7 +4312,7 @@ RectTransform:
   m_Father: {fileID: 1187746199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 1.4620056, y: 0.9469986}
   m_SizeDelta: {x: 2.9239, y: -32.1992}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4709,8 +4713,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startText: {fileID: 1056508742}
   countdownText: {fileID: 1873548923}
-  playerOneBoat: {fileID: 0}
-  playerTwoBoat: {fileID: 0}
+  playerOneBoat: {fileID: 31211088}
+  playerTwoBoat: {fileID: 394687509}
 --- !u!4 &660064832
 Transform:
   m_ObjectHideFlags: 0
@@ -5352,9 +5356,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1281040662}
-        m_TargetAssemblyTypeName: UIManagerVersus, Assembly-CSharp
-        m_MethodName: ReturnToMenu
+      - m_Target: {fileID: 1134176688}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
+        m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7101,8 +7105,12 @@ MonoBehaviour:
   StartScene: {fileID: 1200748296}
   TimeTrial: {fileID: 790366754}
   Versus: {fileID: 1418948565}
-  Boat: {fileID: 0}
-  animator: {fileID: 0}
+  Boat: {fileID: 179653418}
+  playerOneBoat: {fileID: 31211082}
+  playerTwoBoat: {fileID: 394687503}
+  GameOverPanel: {fileID: 1316161027}
+  GameOverPanelV: {fileID: 245610518}
+  animator: {fileID: 1134176689}
 --- !u!95 &1134176689
 Animator:
   serializedVersion: 5
@@ -7113,7 +7121,7 @@ Animator:
   m_GameObject: {fileID: 1134176686}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8710d231cd464244b2c64199b06f39f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7168,6 +7176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f46dbbf7a598e94793053ba504a2b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameRoot: {fileID: 790366754}
   speedText: {fileID: 303762357}
   staminaSlider: {fileID: 1823209067}
   timerText: {fileID: 1207024509}
@@ -7683,7 +7692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1200748297
 Transform:
   m_ObjectHideFlags: 0
@@ -8759,7 +8768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1418948566
 Transform:
   m_ObjectHideFlags: 0
@@ -9073,7 +9082,7 @@ RectTransform:
   m_Father: {fileID: 1676406161}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 1.4620056, y: 0.9469986}
   m_SizeDelta: {x: 2.9239, y: -32.1992}
   m_Pivot: {x: 0.5, y: 0.5}

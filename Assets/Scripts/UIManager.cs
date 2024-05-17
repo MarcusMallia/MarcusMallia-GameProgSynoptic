@@ -4,17 +4,71 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject gameRoot;
-    public Text speedText;         
-    public Slider staminaSlider;   
-    public Text timerText;          
-    public GameObject gameOverPanel; 
-    public Text finalTimeText;
+    [SerializeField] private GameObject gameRoot;
+    [SerializeField] private Text speedText;
+    [SerializeField] private Slider staminaSlider;
+    [SerializeField] private Text timerText;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private Text finalTimeText;
     private float startTime;
     private bool timerRunning = false;
     private const string HighScoreKey = "HighScore";
-    public Text highScoreText;
+    [SerializeField] private Text highScoreText;
     private float finalRaceTime;
+
+    public GameObject GameRoot
+    {
+        get => gameRoot;
+        private set => gameRoot = value;
+    }
+
+    public Text SpeedText
+    {
+        get => speedText;
+        private set => speedText = value;
+    }
+
+    public Slider StaminaSlider
+    {
+        get => staminaSlider;
+        private set => staminaSlider = value;
+    }
+
+    public Text TimerText
+    {
+        get => timerText;
+        private set => timerText = value;
+    }
+
+    public GameObject GameOverPanel
+    {
+        get => gameOverPanel;
+        private set => gameOverPanel = value;
+    }
+
+    public Text FinalTimeText
+    {
+        get => finalTimeText;
+        private set => finalTimeText = value;
+    }
+
+    public Text HighScoreText
+    {
+        get => highScoreText;
+        private set => highScoreText = value;
+    }
+
+    public bool TimerRunning
+    {
+        get => timerRunning;
+        private set => timerRunning = value;
+    }
+
+    public float FinalRaceTime
+    {
+        get => finalRaceTime;
+        private set => finalRaceTime = value;
+    }
     
     void OnEnable()
     {

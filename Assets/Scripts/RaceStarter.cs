@@ -4,23 +4,41 @@ using System.Collections;
 
 public class RaceStarter : MonoBehaviour
 {
-    public Text startText; // Assign in Inspector
-    public Text countdownText; // Assign in Inspector
-    private UIManager uiManager; // Reference to your UIManager
+    [SerializeField] private Text startText; 
+    [SerializeField] private Text countdownText; 
+    private UIManager uiManager; 
     private Boat playerBoat;
     private bool raceStarted = false;
+
+    public Text StartText
+    {
+        get => startText;
+        private set => startText = value;
+    }
+
+    public Text CountdownText
+    {
+        get => countdownText;
+        private set => countdownText = value;
+    }
+
+    public bool RaceStarted
+    {
+        get => raceStarted;
+        private set => raceStarted = value;
+    }
 
    public void Start()
     {
        
-        uiManager = FindObjectOfType<UIManager>(); // Find and assign the UIManager
+        uiManager = FindObjectOfType<UIManager>(); 
         if (startText != null) 
         {
-            startText.gameObject.SetActive(true); // Ensure the start text is visible at the beginning
+            startText.gameObject.SetActive(true); 
         }
         if (countdownText != null) 
         {
-            countdownText.gameObject.SetActive(false); // Ensure countdown text is hidden initially
+            countdownText.gameObject.SetActive(false); 
         }
         
         playerBoat = FindObjectOfType<Boat>();

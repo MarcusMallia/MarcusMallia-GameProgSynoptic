@@ -3,24 +3,77 @@ using UnityEngine;
 public class Boat : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float constantAcceleration = 0.2f;  // Constant acceleration when a key is pressed
-    public float maxDeceleration = 1f;  // Maximum deceleration when stamina is 0
+    [SerializeField] private float constantAcceleration = 0.2f;
+    [SerializeField] private float maxDeceleration = 1f;
     private float currentDeceleration;
-    public float maxSpeed = 5f;  // Theoretical maximum speed
-    public float currentSpeed = 0f;
+    [SerializeField] private float maxSpeed = 5f;
+    [SerializeField] private float currentSpeed = 0f;
     private bool lastKeyPressedLeft = false;
     private bool canMove = false;
-    public float passiveDeceleration = 0.1f;
-    // Stamina variables
-    public float maxStamina = 100f;
-    public float currentStamina;
+    [SerializeField] private float passiveDeceleration = 0.1f;
+    [SerializeField] private float maxStamina = 100f;
+    [SerializeField] private float currentStamina;
 
-    // Stamina depletion and refill rates
-    public float staminaDepletionRate = 10f;
-    public float baseRefillRate = 5f;
+    [SerializeField] private float staminaDepletionRate = 10f;
+    [SerializeField] private float baseRefillRate = 5f;
 
     public delegate void BoatStateHandler(float speed, float stamina);
     public static event BoatStateHandler OnBoatStateUpdated;
+    
+    public float ConstantAcceleration
+    {
+        get => constantAcceleration;
+        private set => constantAcceleration = value;
+    }
+
+    public float MaxDeceleration
+    {
+        get => maxDeceleration;
+        private set => maxDeceleration = value;
+    }
+
+    public float MaxSpeed
+    {
+        get => maxSpeed;
+        private set => maxSpeed = value;
+    }
+
+    public float CurrentSpeed
+    {
+        get => currentSpeed;
+        private set => currentSpeed = value;
+    }
+
+    public float PassiveDeceleration
+    {
+        get => passiveDeceleration;
+        private set => passiveDeceleration = value;
+    }
+
+    public float MaxStamina
+    {
+        get => maxStamina;
+        private set => maxStamina = value;
+    }
+
+    public float CurrentStamina
+    {
+        get => currentStamina;
+        private set => currentStamina = value;
+    }
+
+    public float StaminaDepletionRate
+    {
+        get => staminaDepletionRate;
+        private set => staminaDepletionRate = value;
+    }
+
+    public float BaseRefillRate
+    {
+        get => baseRefillRate;
+        private set => baseRefillRate = value;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
