@@ -3,7 +3,7 @@ using UnityEngine;
 public class BoatVersus : MonoBehaviour
 {
     private Rigidbody2D rb;
-     [SerializeField] private float constantAcceleration = 0.2f; // Constant acceleration when a key is pressed
+    [SerializeField] private float constantAcceleration = 0.2f; // Constant acceleration when a key is pressed
     [SerializeField] private float maxDeceleration = 1f; // Maximum deceleration when stamina is 0
     [SerializeField] private float currentDeceleration;
     [SerializeField] private float maxSpeed = 5f; // Theoretical maximum speed
@@ -15,24 +15,19 @@ public class BoatVersus : MonoBehaviour
 
     [SerializeField] private bool isPlayerOne = true;
 
-
-
     // Stamina variables
     [SerializeField] private float maxStamina = 100f;
     private float currentStamina;
-
 
     // Stamina depletion and refill rates
     [SerializeField] private float staminaDepletionRate = 10f;
     [SerializeField] private float baseRefillRate = 5f;
 
     public delegate void BoatStateHandler(float speed, float stamina);
-
-
     public static event BoatStateHandler OnBoatStateUpdatedPlayer1;
     public static event BoatStateHandler OnBoatStateUpdatedPlayer2;
 
-       public float ConstantAcceleration
+    public float ConstantAcceleration
     {
         get => constantAcceleration;
         set => constantAcceleration = value;
@@ -291,26 +286,13 @@ public class BoatVersus : MonoBehaviour
 
         Debug.Log("fishline");
 
-        // if (uiManager != null && !uiManager.RaceFinished)
-        // {
-            float raceTime = Time.time - uiManager.StartTime;
-            uiManager.FinishTimer(isPlayerOne, raceTime);
-            GameOverPanelV.SetActive(true);
-        // }
+        float raceTime = Time.time - uiManager.StartTime;
+        uiManager.FinishTimer(isPlayerOne, raceTime);
+        GameOverPanelV.SetActive(true);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("other.gameObject.CompareTag('FinishLinePlayer1')" + other.gameObject.CompareTag("FinishLinePlayer1"));
-        Debug.Log("other.gameObject.CompareTag('FinishLinePlayer2')" + other.gameObject.CompareTag("FinishLinePlayer2"));
-        Debug.Log("isPlayerOne" + isPlayerOne);
-        
-        // if ((other.gameObject.CompareTag("FinishLinePlayer1") && isPlayerOne) || 
-        //     (other.gameObject.CompareTag("FinishLinePlayer2") && !isPlayerOne))
-        // {
-            FinishRace();
-        // }
-        
-       
+        FinishRace();
     }
 
     // TODO remove extra boat
